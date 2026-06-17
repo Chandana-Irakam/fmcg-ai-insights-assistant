@@ -350,8 +350,6 @@ Hyderabad, India
 
 GitHub: https://github.com/Chandana-Irakam
 
-LinkedIn: https://linkedin.com/in/chandana-irakam
-
 ---
 
 ## License
