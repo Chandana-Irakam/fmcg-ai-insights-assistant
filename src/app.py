@@ -1,25 +1,33 @@
-# FMCG AI Insights Assistant
+from database import load_sales_data
+from sql_generator import generate_sql
+from query_executor import execute_query
+from llm_chain import generate_response
 
-def greet():
-    print("Welcome to FMCG AI Insights Assistant!")
-
-def process_query(query):
-    """
-    Placeholder function for natural language queries.
-    """
-    return f"Processing query: {query}"
 
 def main():
-    greet()
+    sales_data = load_sales_data()
+
+    if sales_data is None:
+        print("Failed to load dataset.")
+        return
 
     while True:
-        query = input("\nAsk a business question (type 'exit' to quit): ")
+        question = input("\nAsk a question (type 'exit' to quit): ")
 
-        if query.lower() == "exit":
-            print("Goodbye!")
+        if question.lower() == "exit":
             break
 
-        response = process_query(query)
+        sql_query = generate_sql(question)
+        result = execute_query(sql_query, sales_data)
+        response = generate_response(question, result)
+
+        print("\nGenerated SQL:")
+        print(sql_query)
+
+        print("\nResult:")
+        print(result)
+
+        print("\nAI Response:")
         print(response)
 
 
