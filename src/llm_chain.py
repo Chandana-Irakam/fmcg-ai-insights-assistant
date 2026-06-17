@@ -1,13 +1,6 @@
-def generate_sql(question):
-    question = question.lower()
+def generate_response(question, result):
 
-    if "revenue" in question:
-        return "SELECT SUM(revenue) FROM sales"
+    if isinstance(result, (int, float)):
+        return f"The answer to '{question}' is {result}."
 
-    if "units sold" in question:
-        return "SELECT SUM(units_sold) FROM sales"
-
-    if "promotion" in question:
-        return "SELECT * FROM sales WHERE promotion_flag = True"
-
-    return "SELECT * FROM sales"
+    return f"Retrieved {len(result)} records for '{question}'."
