@@ -1,10 +1,13 @@
 def generate_sql(question):
-    """
-    Converts natural language questions to SQL.
-    Placeholder implementation.
-    """
+    question = question.lower()
 
-    if "sales" in question.lower():
-        return "SELECT * FROM sales_promotions;"
+    if "revenue" in question:
+        return "SELECT SUM(revenue) FROM sales"
 
-    return "SELECT * FROM sales_promotions LIMIT 10;"
+    if "units sold" in question:
+        return "SELECT SUM(units_sold) FROM sales"
+
+    if "promotion" in question:
+        return "SELECT * FROM sales WHERE promotion_flag = True"
+
+    return "SELECT * FROM sales"
