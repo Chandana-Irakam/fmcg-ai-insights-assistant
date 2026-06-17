@@ -1,9 +1,9 @@
 import pandas as pd
 
+
 def load_sales_data():
     try:
-        sales = pd.read_csv("data/sales_promotions.csv")
-        return sales
+        return pd.read_csv("data/sales_promotions.csv")
     except Exception as e:
-        print("Error loading data:", e)
+        print("Error:", e)
         return None
